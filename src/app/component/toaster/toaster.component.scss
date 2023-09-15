@@ -1,0 +1,15 @@
+@import "src/assets/style/_variables";
+
+.toaster {
+  width: 281px;
+  height: 56px;
+  position: fixed;
+  right: 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  font-family: 'Helvetica_regular';
+  color: $white;
+  font-size: 13px;
+}

@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/assets/style/custom_bootstrap";
+@import "src/assets/style/_variables";
+@font-face {
+  font-family: 'Helvetica_bolt';
+  src: url(assets/font/helvetica_bold.otf);
+}
+@font-face {
+  font-family: 'Helvetica_regular';
+  src: url(assets/font/Helvetica_regular.otf);
+}
+@font-face {
+  font-family: 'Helvetica_light';
+  src: url(assets/font/Helvetica_light.otf);
+}
+
+body {
+  background-color: $gray_10;
+}

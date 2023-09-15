@@ -1,0 +1,56 @@
+@import "src/assets/style/_variables";
+
+.modal_user {
+  background-color: $white;
+  padding: 1.5rem;
+  margin-top: 4rem;
+  border-radius: 6px;
+  box-shadow: 0 0 30px #523F690D;
+
+  &-close {
+    cursor: pointer;
+  }
+
+  .title-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4em;
+
+    &__title {
+      font-size: 19px;
+      color: $black;
+      opacity: 1;
+      font-family: 'Helvetica_bolt';
+    }
+  }
+
+  &-btnEdit {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-btn {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.email {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  padding-left: 0.5rem;
+  height: 6rem;
+}
+
+.error_message {
+  color: $pink_30;
+  font-family: Helvetica_regular;
+  font-size: 16px;
+}
+
+
+
+

@@ -1,0 +1,19 @@
+<div class="table">
+  <div class="table-header">
+    <div *ngFor="let item of header" class="th">{{item}}</div>
+  </div>
+  <div class="table-tbody">
+    <div class="tr" *ngFor="let user of arrayUserList" [class.active]="user.id === idActive" (click)="changeUser(user)">
+      <div class="td">{{user.username}}</div>
+      <div class="td">{{user.first_name}}</div>
+      <div class="td">{{user.last_name}}</div>
+      <div class="td">{{user.email}}</div>
+      <div class="td">{{user.user_type}}</div>
+      <div class="td">
+        <div class="user_list__btn">
+          <button class="btn btn-blue" (click)="userInfo($event, user)">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

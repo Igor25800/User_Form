@@ -1,0 +1,14 @@
+@import "src/assets/style/_variables";
+
+.back {
+  color: $blue;
+  font-size: 16px;
+  font-family: Helvetica_bolt;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  color: $pink_100;
+  font-family: Helvetica_bolt;
+}

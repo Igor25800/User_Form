@@ -1,0 +1,20 @@
+.container {
+  margin-top: 1rem;
+  display: flex;
+
+  .user_list {
+    width: 68rem;
+    margin-right: 2rem;
+
+    &__btn {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 1.3rem;
+    }
+  }
+
+  .modal_user {
+    width: 28%;
+  }
+}

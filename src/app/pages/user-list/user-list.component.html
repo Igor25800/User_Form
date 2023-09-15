@@ -1,0 +1,38 @@
+<div class="container">
+  <ng-container *ngIf="toaster | async as isEventToaster">
+    <toaster
+      *ngIf="isEventToaster.run"
+      [eventToaster]="isEventToaster"
+      (eventEmitToaster)="eventToaster($event)"
+    ></toaster>
+  </ng-container>
+
+  <div class="user_list">
+    <div class="user_list__btn">
+      <button class="btn btn-blue" (click)="eventModal(true)">Create User</button>
+    </div>
+    <table-user-list *ngIf="userList | async as userList"
+      [arrayUserList]="userList"
+      (eventChangeUser)="changeUser($event)"
+      (eventRoute)="nextRouter($event)"
+    ></table-user-list>
+  </div>
+  <div class="modal_user">
+    <user-modal
+      *ngIf="isCloseModal"
+      [formUser]="formUser"
+      [submitted]="submitted"
+      [nameModal]="nameModal"
+      [closeModal]="isCloseModal"
+      [isToggleModal]="isToggleModal"
+      (eventCloseModal)="eventModal($event)"
+      (eventCreateUser)="createUser($event)"
+      (eventChangeUser)="saveChangeUser($event)"
+      (eventDeleteUser)="deleteUser()"
+    ></user-modal>
+  </div>
+</div>
+
+
+
+

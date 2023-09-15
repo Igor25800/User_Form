@@ -1,0 +1,62 @@
+@import "src/assets/style/_variables";
+
+
+.table {
+  background-color: $white;
+  margin-left: 2rem;
+  border-radius: 6px;
+  box-shadow: 0 0 30px #523F690D;
+
+  &-header {
+    display: flex;
+
+    .th {
+      padding: 1rem;
+      text-align: left;
+      font-size: 13px;
+      letter-spacing: 0;
+      width: 25%;
+      color: $gray_100;
+      text-transform: uppercase;
+      opacity: 1;
+      font-family: 'Helvetica_bolt';
+    }
+  }
+
+  &-tbody {
+    width: 100%;
+    display: flex;
+    background-color: $white;
+    opacity: 1;
+    flex-direction: column;
+
+    .tr {
+      width: 100%;
+      display: flex;
+      margin-bottom: 0.5rem;
+      background: $gray_30;
+
+      .td {
+        padding: 1rem;
+        width: 25%;
+        text-align: left;
+        color: $black;
+        font-size: 13px;
+        opacity: 1;
+        font-family: 'Helvetica_regular';
+      }
+    }
+
+    .tr:hover {
+      background-color: $gray_50;
+    }
+
+    .active {
+      background-color: $gray_50;
+    }
+
+    .tr:last-child {
+      margin-bottom: 2.5rem;
+    }
+  }
+}

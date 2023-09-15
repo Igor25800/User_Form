@@ -1,0 +1,81 @@
+<div class="modal_user"  [formGroup]="formUser">
+  <div class="title-block">
+    <div class="title-block__title" >{{nameModal}}</div>
+    <img class="modal_user-close" src="assets/img/close.svg" (click)="eventModal(false)">
+  </div>
+    <div class="form_group">
+      <label class="form_group-label">User Name*</label>
+      <input appValidateForm
+             [control]="validatorForm('username')"
+             formControlName="username"
+             class="form_group-input" type="text"
+             placeholder="User Name">
+      <div *ngIf="validatorForm('username')" class="error_message">Error message</div>
+    </div>
+  <div class="form_group">
+    <label class="form_group-label">First Name*</label>
+    <input
+      appValidateForm
+      [control]="validatorForm('first_name')"
+      formControlName="first_name"
+      class="form_group-input"
+      type="text"
+      placeholder="First Name">
+    <div *ngIf="validatorForm('first_name')" class="error_message">Error message</div>
+  </div>
+  <div class="form_group">
+    <label class="form_group-label">Last Name*</label>
+    <input appValidateForm
+      [control]="validatorForm('last_name')"
+      formControlName="last_name" class="form_group-input" type="text" placeholder="Last Name">
+    <div *ngIf="validatorForm('last_name')" class="error_message">Error message</div>
+  </div>
+  <div class="form_group">
+    <label class="form_group-label">Email*</label>
+    <input appValidateForm
+      [control]="validatorForm('email')"
+      formControlName="email" class="form_group-input form_group-email" type="text">
+    <img class="email" src="assets/img/email.svg" alt="">
+    <div *ngIf="validatorForm('email')" class="error_message">Error message</div>
+  </div>
+  <div class="form_group">
+    <label class="form_group-label">Type*</label>
+    <label class="form_group-parent">
+      <select appValidateForm
+        [control]="validatorForm('user_type')"
+        formControlName="user_type" class="form_group-parent__select">
+        <option>Admin</option>
+        <option>Driver</option>
+      </select>
+    </label>
+    <div *ngIf="validatorForm('user_type')" class="error_message">Error message</div>
+  </div>
+  <div class="form_group">
+    <label class="form_group-label">Password*</label>
+    <input appValidateForm [control]="validatorForm('password')"
+           [errorPassword]="this.formUser.getError('errorPassword')"
+           formControlName="password"
+           class="form_group-input"
+           type="text" placeholder="Password">
+    <div *ngIf="validatorForm('password') || this.formUser.getError('errorPassword')" class="error_message">Error message</div>
+  </div>
+
+  <div class="form_group">
+    <label class="form_group-label">Repeat Password*</label>
+    <input appValidateForm
+           [control]="validatorForm('repeat_password')"
+           [errorPassword]="this.formUser.getError('errorPassword')"
+           formControlName="repeat_password" class="form_group-input"
+           type="text"
+           placeholder="Repeat Password">
+    <div *ngIf="validatorForm('repeat_password') || this.formUser.getError('errorPassword')" class="error_message">Error message</div>
+  </div>
+  <div class="modal_user-btnEdit" *ngIf="isToggleModal">
+    <button class="btn btn-ping" (click)="deleteUser()">Delete</button>
+    <button class="btn btn-blue" (click)="changeUser()">Save</button>
+  </div>
+  <div class="modal_user-btn" *ngIf="!isToggleModal">
+    <button class="btn btn-blue" (click)="createUser()">Create</button>
+  </div>
+</div>
+
