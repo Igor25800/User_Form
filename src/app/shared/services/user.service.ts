@@ -1,21 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable} from "rxjs";
 import {User_listInterface} from "../interfaces/user_list.interface";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUserList = environment.api;
+  private apiUserList = environment.api
 
   constructor(
     private http: HttpClient
