@@ -11,7 +11,6 @@ export class ToasterComponent {
     @Output() eventEmitToaster = new EventEmitter<ToasterInterface>()
 
     constructor() {
-      console.log(this.eventToaster)
       setTimeout(() => {
         this.eventToaster = {...this.eventToaster, run: false};
         this.eventEmitToaster.emit(this.eventToaster);
