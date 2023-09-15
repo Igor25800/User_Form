@@ -7,9 +7,6 @@ import {SharedModule} from "../../shared/module/shared.module";
 import { UserModalComponent } from './user-modal/user-modal.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
-
-
-
 @NgModule({
   declarations: [
     UserListComponent,

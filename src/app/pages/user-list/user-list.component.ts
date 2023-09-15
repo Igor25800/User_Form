@@ -2,7 +2,7 @@ import {Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {UserService} from "../../shared/services/user.service";
 import * as uuid from 'uuid';
-import { map, Observable, of, switchMap} from "rxjs";
+import {map, Observable, of, switchMap} from "rxjs";
 import {User_listInterface} from "../../shared/interfaces/user_list.interface";
 import {ToasterService} from "../../shared/services/toaster.service";
 import {ToasterInterface} from "../../shared/interfaces/toaster.interface";
@@ -19,8 +19,6 @@ export class UserListComponent implements OnInit {
   isCloseModal: boolean = false;
   isToggleModal: boolean = false;
   submitted!: boolean;
-  textToaster!: string;
-  colorToaster!: string;
   nameModal!: string;
   formUser!: FormGroup;
   toaster!: Observable<ToasterInterface>;
@@ -56,10 +54,10 @@ export class UserListComponent implements OnInit {
   }
 
   saveChangeUser({value}: FormGroup): void {
-    if(this.formUser.invalid) {
+    if (this.formUser.invalid) {
       this.submitted = true;
       this.toasterService.openToaster({backgroundColor: '#EF7DA0', run: true, name: 'Invalid'});
-      return ;
+      return;
     }
     this.userService.changeUser({...value, id: this.uuidUserChange}).pipe(
       switchMap(() => this.userService.getUserList())
@@ -92,10 +90,10 @@ export class UserListComponent implements OnInit {
   }
 
   createUser(formUser: FormGroup): void {
-    if(this.formUser.invalid) {
+    if (this.formUser.invalid) {
       this.submitted = true;
       this.toasterService.openToaster({backgroundColor: '#EF7DA0', run: true, name: 'Invalid'});
-      return ;
+      return;
     }
     this.userService.addUser({...formUser.value, id: uuid.v4()}).pipe(
       takeUntilDestroyed(this.destroyRef),

@@ -31,7 +31,7 @@ export class UserModalComponent {
     this.eventChangeUser.emit(this.formUser);
   }
 
-  deleteUser():void {
+  deleteUser(): void {
     this.eventDeleteUser.emit();
   }
 
@@ -40,6 +40,6 @@ export class UserModalComponent {
   }
 
   validatorForm(name: string): Validators {
-    return (this.validatorControl(name).invalid) &&  (this.validatorControl(name).dirty  || (this.validatorControl(name).touched || this.submitted));
+    return (this.validatorControl(name).invalid) && (this.validatorControl(name).dirty || (this.validatorControl(name).touched || this.submitted));
   }
 }

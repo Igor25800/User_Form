@@ -9,7 +9,7 @@ import {User_listInterface} from "../../shared/interfaces/user_list.interface";
   templateUrl: './user-view.component.html',
   styleUrls: ['./user-view.component.scss']
 })
-export class UserViewComponent  implements OnInit {
+export class UserViewComponent implements OnInit {
   userInfo!: Observable<User_listInterface>;
 
   constructor(
@@ -26,5 +26,4 @@ export class UserViewComponent  implements OnInit {
     const idParams = this.activateRoute.snapshot.params['id'];
     this.userInfo = this.userService.getUser(idParams);
   }
-
 }
