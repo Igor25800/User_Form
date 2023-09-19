@@ -1,11 +1,10 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'user-modal',
   templateUrl: './user-modal.component.html',
   styleUrls: ['./user-modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserModalComponent {
   @Input() closeModal!: boolean;
@@ -41,5 +40,27 @@ export class UserModalComponent {
 
   validatorForm(name: string): Validators {
     return (this.validatorControl(name).invalid) && (this.validatorControl(name).dirty || (this.validatorControl(name).touched || this.submitted));
+  }
+
+  errorMessage(control: string): string {
+    if(this.validatorControl(control).getError('required')) {
+      return 'required *';
+    }
+    if(this.validatorControl(control).getError('email')) {
+      return 'required @';
+    }
+    if(this.formUser.getError('errorPassword')) {
+      return 'repeat Password';
+    }
+    if(this.validatorControl(control).getError('minlength')) {
+      return 'length password more 8';
+    }
+    if(this.validatorControl(control).getError('pattern')) {
+      return 'least one number and one letter';
+    }
+    if(this.validatorControl(control).getError('userName')) {
+      return 'there is already a user';
+    }
+    return 'required'
   }
 }

@@ -10,7 +10,7 @@
            formControlName="username"
            class="form_group-input" type="text"
            placeholder="User Name">
-    <div *ngIf="validatorForm('username')" class="error_message">Error message</div>
+    <div *ngIf="validatorForm('username')" class="error_message">{{errorMessage('username')}}</div>
   </div>
   <div class="form_group">
     <label class="form_group-label">First Name*</label>
@@ -21,14 +21,14 @@
       class="form_group-input"
       type="text"
       placeholder="First Name">
-    <div *ngIf="validatorForm('first_name')" class="error_message">Error message</div>
+    <div *ngIf="validatorForm('first_name')" class="error_message">{{errorMessage('first_name')}}</div>
   </div>
   <div class="form_group">
     <label class="form_group-label">Last Name*</label>
     <input appValidateForm
            [control]="validatorForm('last_name')"
            formControlName="last_name" class="form_group-input" type="text" placeholder="Last Name">
-    <div *ngIf="validatorForm('last_name')" class="error_message">Error message</div>
+    <div *ngIf="validatorForm('last_name')" class="error_message">{{errorMessage('last_name')}}</div>
   </div>
   <div class="form_group">
     <label class="form_group-label">Email*</label>
@@ -36,7 +36,7 @@
            [control]="validatorForm('email')"
            formControlName="email" class="form_group-input form_group-email" type="text">
     <img class="email" src="assets/img/email.svg" alt="">
-    <div *ngIf="validatorForm('email')" class="error_message">Error message</div>
+    <div *ngIf="validatorForm('email')" class="error_message">{{errorMessage('email')}}</div>
   </div>
   <div class="form_group">
     <label class="form_group-label">Type*</label>
@@ -48,7 +48,7 @@
         <option>Driver</option>
       </select>
     </label>
-    <div *ngIf="validatorForm('user_type')" class="error_message">Error message</div>
+    <div *ngIf="validatorForm('user_type')" class="error_message">{{errorMessage('user_type')}}</div>
   </div>
   <div class="form_group">
     <label class="form_group-label">Password*</label>
@@ -57,8 +57,8 @@
            formControlName="password"
            class="form_group-input"
            type="text" placeholder="Password">
-    <div *ngIf="validatorForm('password') || this.formUser.getError('errorPassword')" class="error_message">Error
-      message
+    <div *ngIf="validatorForm('password') || this.formUser.getError('errorPassword')" class="error_message">
+      {{errorMessage('password')}}
     </div>
   </div>
 
@@ -70,8 +70,8 @@
            formControlName="repeat_password" class="form_group-input"
            type="text"
            placeholder="Repeat Password">
-    <div *ngIf="validatorForm('repeat_password') || this.formUser.getError('errorPassword')" class="error_message">Error
-      message
+    <div *ngIf="validatorForm('repeat_password') || this.formUser.getError('errorPassword')" class="error_message">
+      {{errorMessage('repeat_password')}}
     </div>
   </div>
   <div class="modal_user-btnEdit" *ngIf="isToggleModal">

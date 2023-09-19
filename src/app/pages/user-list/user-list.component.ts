@@ -23,6 +23,7 @@ export class UserListComponent implements OnInit {
   formUser!: FormGroup;
   toaster!: Observable<ToasterInterface>;
   uuidUserChange!: string;
+  userNameChangeSave!: string;
   private destroyRef = inject(DestroyRef);
 
   constructor(
@@ -43,9 +44,8 @@ export class UserListComponent implements OnInit {
   }
 
   changeUser(user: User_listInterface): void {
-    this.formUser.controls['username'].clearAsyncValidators();
-    this.formUser.controls['username'].updateValueAndValidity();
     const userForm = this.removeProperty('id', user);
+    this.userNameChangeSave = user.username;
     this.formUser.patchValue({...userForm, repeat_password: user.password});
     this.isCloseModal = true;
     this.nameModal = user.username;
@@ -79,8 +79,6 @@ export class UserListComponent implements OnInit {
   }
 
   eventModal(event: boolean): void {
-    this.formUser.controls['username'].setAsyncValidators(this._nameValidatorServer.bind(this));
-    this.formUser.controls['username'].updateValueAndValidity();
     this.formUser.markAsUntouched();
     this.formUser.reset();
     this.nameModal = 'Create New User'
@@ -122,10 +120,10 @@ export class UserListComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       user_type: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required,
-        Validators.max(8),
+        Validators.minLength(8),
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]),
       repeat_password: new FormControl('', [Validators.required,
-        Validators.max(8),
+        Validators.minLength(8),
         Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')])
     }, {validators: this.customValidatePassword})
   }
@@ -142,8 +140,11 @@ export class UserListComponent implements OnInit {
         personEmail.filter((item: User_listInterface) => item.username.toLowerCase().trim() === control.value.toLowerCase().trim())
       ),
       map((user: User_listInterface[]) => {
-        if (user.length) {
+        if (user.length && user[0]?.username !== this.userNameChangeSave) {
           return <ValidationErrors>{userName: true};
+        }
+        if(user[0]?.username === control.get('username')?.value) {
+          return null;
         }
         return null;
       }),
