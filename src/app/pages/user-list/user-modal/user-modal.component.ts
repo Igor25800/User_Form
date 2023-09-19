@@ -47,19 +47,19 @@ export class UserModalComponent {
       return 'required *';
     }
     if(this.validatorControl(control).getError('email')) {
-      return 'required @';
+      return 'required @ *';
     }
     if(this.formUser.getError('errorPassword')) {
-      return 'repeat Password';
+      return 'repeat Password *';
     }
     if(this.validatorControl(control).getError('minlength')) {
-      return 'length password more 8';
+      return 'length password more 8 *';
     }
     if(this.validatorControl(control).getError('pattern')) {
-      return 'least one number and one letter';
+      return 'least one number and one letter *';
     }
     if(this.validatorControl(control).getError('userName')) {
-      return 'there is already a user';
+      return 'there is already a user *';
     }
     return 'required'
   }
