@@ -49,9 +49,6 @@ export class UserModalComponent {
     if(this.validatorControl(control).getError('email')) {
       return 'required @ *';
     }
-    if(this.formUser.getError('errorPassword')) {
-      return 'repeat Password *';
-    }
     if(this.validatorControl(control).getError('minlength')) {
       return 'length password more 8 *';
     }
@@ -60,6 +57,9 @@ export class UserModalComponent {
     }
     if(this.validatorControl(control).getError('userName')) {
       return 'there is already a user *';
+    }
+    if(this.formUser.getError('errorPassword')) {
+      return 'repeat Password *';
     }
     return 'required'
   }
