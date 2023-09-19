@@ -56,7 +56,7 @@ export class UserListComponent implements OnInit {
   saveChangeUser({value}: FormGroup): void {
     if (this.formUser.invalid) {
       this.submitted = true;
-      this.toasterService.openToaster({backgroundColor: '#EF7DA0', run: true, name: 'Invalid'});
+      this.toasterService.openToaster({backgroundColor: '#EF7DA0', run: true, name: 'Invalid_Form'});
       return;
     }
     this.userService.changeUser({...value, id: this.uuidUserChange}).pipe(
@@ -73,7 +73,7 @@ export class UserListComponent implements OnInit {
       switchMap(() => this.userService.getUserList())
     ).subscribe((userList: User_listInterface[]) => {
       this.userList = of(userList);
-      this.toasterService.openToaster({backgroundColor: '#66bb6a', run: true, name: 'delete User'});
+      this.toasterService.openToaster({backgroundColor: '#66bb6a', run: true, name: `delete User ${this.nameModal}`});
       this.isCloseModal = false;
     })
   }
@@ -97,7 +97,7 @@ export class UserListComponent implements OnInit {
       takeUntilDestroyed(this.destroyRef),
       switchMap(() => this.userService.getUserList())
     ).subscribe((user: User_listInterface[]) => {
-      this.toasterService.openToaster({backgroundColor: '#66bb6a', run: true, name: 'add User'});
+      this.toasterService.openToaster({backgroundColor: '#66bb6a', run: true, name: `add User ${formUser.get('username')?.value}`});
       this.userList = of(user);
       this.formUser.reset();
       this.isCloseModal = false;
